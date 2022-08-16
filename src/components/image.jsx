@@ -1,6 +1,6 @@
-import robot from "../asset/image/robot.jpg";
+// import robot from "../asset/image/robot.jpg";
 
 
-export const Image = () => {
-    return <img src={robot} alt="" />
-}
+// export const Image = () => {
+//     return <img src={robot} alt="" />
+// }
