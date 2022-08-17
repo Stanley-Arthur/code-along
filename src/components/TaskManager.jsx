@@ -1,21 +1,45 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {v4 as uuid} from "uuid";
 import TaskItem from "./TaskItem";
 
+const getTasksFromLocalStorage = () => {
+    // get tasks from local storage
+    const tasks = localStorage.getItem("tasks")
+    if (!tasks) return []
+    return JSON.parse(tasks)
+}
+
 function TaskManager(){
-    const [tasks, setTasks] = useState("");
+    const [tasks, setTasks] = useState(getTasksFromLocalStorage);
     const [input, setInput] = useState("");
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    if(input === "") return;
-    setTasks([input, ...tasks], () =>{});
-    setInput("")
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(input === "") return;
+    
+       
+        const newTask = { 
+            id: uuid(),
+            text: input,
+            completed: false,
+    
+        };
+    
+        setTasks([newTask, ...tasks]);
+        setInput("") ;  
+    }
+    
+const handleDelete =(id) => {
+    const newTasks = tasks.filter((task)=> task.id !==id);
+    setTasks(newTasks);
 }
-const handleDelete=idx=>{
-    const newTasks =tasks.filter((task)=>task !==idx)
-    setTasks(newTasks)
-}
-//Map run through the items in the arrays, map retruns array but loop
+
+useEffect (() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}, [tasks]);
+
+
+//Map run through the items in the arrays, map returns array but loop
     return (
         <div className="h-screen bg-blue-600 flex justify-center items-center">
             <div className="max-w-xl bg-white rounded-xl px-5 py-10 max-h-96">
@@ -27,13 +51,9 @@ const handleDelete=idx=>{
                         </button>
                 </form>
                 <div className="space-y-2 overflow-y-auto h-56">
-                    {
-                        tasks.map((task) =>(
-                        <TaskItem task={task}
-                        handleDelete={handleDelete}/>
-                        ))
-                        
-                    }
+                    {tasks.map((task) =>(
+                        <TaskItem key={task.id} task={task} handleDelete={handleDelete} />
+                        ))}
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ function Form(){
         phoneNumber:"",
         email:"",
     })
-    console.log(data)
+   
     const handleChange=(event)=>{
         let name=event.target.name
         let value=event.target.value 
@@ -25,18 +25,18 @@ function Form(){
 
                         <div>
                             <label htmlFor="firstName"
-                            className="form label">First Name</label>
+                            className="block text-lg text-gray-500;">First Name</label>
                             <input type="text" name="firstName" id="firstName" 
-                            className="form-input" value={data.firstName} onChange={handleChange}/>
+                            className="border w-full outline-none py-1 px-2 text-lg text-gray-700;" value={data.firstName} onChange={handleChange}/>
 
                         </div>
                         <div>
-                            <label htmlFor="lastName" className="form label">Last Name</label>
-                            <input type="text" name="lastName" id="lastName" className="form-input" value={data.lastName} onChange={handleChange}/>
+                            <label htmlFor="lastName" className="block text-lg text-gray-500;">Last Name</label>
+                            <input type="text" name="lastName" id="lastName" className="border w-full outline-none py-1 px-2 text-lg text-gray-700;" value={data.lastName} onChange={handleChange}/>
                         </div>
                         <div>
                             <label htmlFor="middleName">Middle Name</label>
-                            <input type="text" name="middleName" id="middleName" className="form-input"value={data.middleName} onChange={handleChange} />
+                            <input type="text" name="middleName" id="middleName" className="border w-full outline-none py-1 px-2 text-lg text-gray-700;"value={data.middleName} onChange={handleChange} />
                         </div>
                     </div>
                     <div>
