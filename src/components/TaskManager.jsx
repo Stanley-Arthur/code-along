@@ -30,7 +30,7 @@ function TaskManager(){
     }
     
 const handleDelete =(id) => {
-    const newTasks = tasks.filter((task)=> task.id !==id);
+    const newTasks = tasks.filter((task) => task.id !==id);
     setTasks(newTasks);
 }
 
