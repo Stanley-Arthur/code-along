@@ -45,6 +45,7 @@ useEffect (() => {
             <div className="max-w-xl bg-white rounded-xl px-5 py-10 max-h-96">
                 <form onSubmit={handleSubmit} className="space-x-4 w-[30rem] mb-10 flex">
                     <input type="text" className="border-2 w-10/12 border-blue-400 p-2 rounded-md outline-none" onChange={(e) => setInput(e.target.value)} value={input} />
+
                     
                     <button type="submit" className=" bg-blue-600 hover:bg-green text-lg py-2 px-5 rounded-md" disabled={""}>
                         Add
