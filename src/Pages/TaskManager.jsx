@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {v4 as uuid} from "uuid";
-import TaskItem from "./TaskItem";
+import TaskItem from "../components/TaskItem";
 
 const getTasksFromLocalStorage = () => {
     // get tasks from local storage
@@ -8,6 +8,8 @@ const getTasksFromLocalStorage = () => {
     if (!tasks) return []
     return JSON.parse(tasks)
 }
+
+
 
 function TaskManager(){
     const [tasks, setTasks] = useState(getTasksFromLocalStorage);
